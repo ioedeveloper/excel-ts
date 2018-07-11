@@ -7,6 +7,8 @@ import {createConnection} from "typeorm";
 // create app db connection.
 createConnection().then(() => {
   console.log("Database Connection Established...");
+}).catch(()=>{
+    console.log("Oops! An error occured when connecting to the database.");
 });
 
 // create a new express application instance
