@@ -16,6 +16,9 @@ var app = express();
 var port = process.env.PORT || 8001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.get("/", function (req, res) {
+    res.status(200).send("Welcome to Excel-TS");
+});
 // serve the application at the given port
 app.listen(port, function () {
     // success callback
