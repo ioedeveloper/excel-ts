@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var bodyParser = require("body-parser");
 var typeorm_1 = require("typeorm");
+var api_1 = require("./routes/api");
 // create app db connection.
 typeorm_1.createConnection().then(function () {
     console.log("Database Connection Established...");
@@ -16,6 +17,7 @@ var app = express();
 var port = process.env.PORT || 8001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/excel", api_1.excelApiRoutes.router);
 app.get("/", function (req, res) {
     res.status(200).send("Welcome to Excel-TS");
 });
