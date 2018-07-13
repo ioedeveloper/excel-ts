@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // importing libraries and dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var fileUpload = require("express-fileupload");
 var typeorm_1 = require("typeorm");
 var api_1 = require("./routes/api");
 // create app db connection.
@@ -17,8 +18,9 @@ var app = express();
 var port = process.env.PORT || 8001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
 app.use("/excel", api_1.excelApiRoutes.router);
-app.get("/", function (req, res) {
+app.get("/excel", function (req, res) {
     res.status(200).send("Welcome to Excel-TS");
 });
 // serve the application at the given port

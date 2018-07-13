@@ -20,6 +20,9 @@ var ExcelApi = /** @class */ (function () {
     }
     ExcelApi.prototype.init = function () {
         this.router.post("/upload", excelApiController.excelHandler);
+        this.router.get("/upload", function (req, res) {
+            return res.status(200).send("OK");
+        });
     };
     return ExcelApi;
 }());

@@ -13,6 +13,9 @@ class ExcelApi {
   }
   private init():void {
     this.router.post("/upload", excelApiController.excelHandler);
+    this.router.get("/upload", (req:Request, res:Response)=>{
+        return res.status(200).send("OK");
+    });
   }
 }
 
