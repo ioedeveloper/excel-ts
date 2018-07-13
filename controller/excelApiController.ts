@@ -1,10 +1,10 @@
 import {Request, Response, NextFunction} from "express";
 
 let excelHandler = (req:Request, res:Response) =>{
-    if(req.body.excel != null){
-        return res.status(200).send("Excel upload successfull!");
+    if(typeof req.files === "undefined"){
+        res.status(400).send("File upload failed!");
     }else{
-        return res.status(200).send("No file uploaded!");
+        res.status(200).send(req.files.excel);
     }
 };
 export {excelHandler};
