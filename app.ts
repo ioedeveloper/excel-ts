@@ -1,9 +1,7 @@
 // importing libraries and dependencies
-import express = require("express");
+import express from "express";
 import {Request, Response } from "express";
 import bodyParser = require("body-parser");
-import path = require("path");
-import fileUpload = require("express-fileupload");
 import {createConnection} from "typeorm";
 
 import {excelApiRoutes} from "./routes/api";
@@ -23,7 +21,6 @@ const port:any = process.env.PORT || 8001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(fileUpload());
 app.use("/excel", excelApiRoutes.router);
 
 app.get("/excel", (req:Request, res:Response) =>{
