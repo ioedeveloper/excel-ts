@@ -4,6 +4,7 @@ import {Request, Response } from "express";
 import bodyParser = require("body-parser");
 import path = require("path");
 import {createConnection} from "typeorm";
+import {excelApiRoutes} from "./routes/api";
 
 // create app db connection.
 createConnection().then(() => {
@@ -20,6 +21,8 @@ const port:any = process.env.PORT || 8001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/excel", excelApiRoutes.router);
+
 app.get("/", (req:Request, res:Response) =>{
     res.status(200).send("Welcome to Excel-TS");
 });
