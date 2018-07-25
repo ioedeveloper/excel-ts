@@ -13,8 +13,10 @@ var Excel = /** @class */ (function () {
     }
     Excel.prototype.extractData = function (filePath) {
         var wrkbk = xlsx.readFile(filePath);
-        for (var names in wrkbk.SheetNames) {
-            console.log(wrkbk.SheetNames[names]);
+        for (var index in wrkbk.SheetNames) {
+            var wrkshtname = wrkbk.SheetNames[index];
+            var wrksht = wrkbk.Sheets[wrkshtname];
+            console.log(wrksht);
         }
     };
     return Excel;
