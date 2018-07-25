@@ -16,7 +16,11 @@ var Excel = /** @class */ (function () {
         for (var index in wrkbk.SheetNames) {
             var wrkshtname = wrkbk.SheetNames[index];
             var wrksht = wrkbk.Sheets[wrkshtname];
-            console.log(wrksht);
+            for (var obj in wrksht) {
+                if (wrksht[obj]["v"] !== void 0) {
+                    console.log(wrksht[obj]["v"]);
+                }
+            }
         }
     };
     return Excel;
