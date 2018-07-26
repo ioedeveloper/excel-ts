@@ -6,9 +6,10 @@ class Excel{
             let wrkshtname: string = wrkbk.SheetNames[index];
             let wrksht:xlsx.IWorkSheet = wrkbk.Sheets[wrkshtname];
             for(let obj in wrksht){
-               if(wrksht[obj]["v"] !== void 0){
-                console.log(wrksht[obj]["v"]);
-               }
+            //    if(wrksht[obj]["v"] !== void 0){
+            //     console.log(wrksht[obj]["v"]);
+            //    }
+                console.log(wrksht[obj]);
             }
         }
     }
