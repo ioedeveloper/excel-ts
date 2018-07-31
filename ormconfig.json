@@ -1,10 +1,7 @@
 {
     "type": "mongodb",
     "host": "localhost",
-    "database": "excel-ts",
     "port": 27017,
-    "username": "",
-    "password": "",
-    "synchronize": true,
-    "logging": true
-  }
+    "database": "excel-ts",
+    "entities": ["./dist/models/*"]
+}

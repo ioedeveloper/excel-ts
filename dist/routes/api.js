@@ -8,23 +8,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // importing libraries and dependencies
-var express_1 = require("express");
-var excelApiController = __importStar(require("../controller/excelApiController"));
+const express_1 = require("express");
+const excelApiController = __importStar(require("../controller/excelApiController"));
 /**
  * Handles routing of leave api request
  */
-var ExcelApi = /** @class */ (function () {
-    function ExcelApi() {
+class ExcelApi {
+    constructor() {
         this.router = express_1.Router();
         this.init();
     }
-    ExcelApi.prototype.init = function () {
+    init() {
         this.router.post("/upload", excelApiController.excelHandler);
-        this.router.get("/upload", function (req, res) {
+        this.router.get("/upload", (req, res) => {
             return res.status(200).send("OK");
         });
-    };
-    return ExcelApi;
-}());
-var excelApiRoutes = new ExcelApi();
+    }
+}
+const excelApiRoutes = new ExcelApi();
 exports.excelApiRoutes = excelApiRoutes;
+//# sourceMappingURL=api.js.map

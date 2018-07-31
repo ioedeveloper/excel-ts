@@ -8,7 +8,12 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\dist\\app.js"
+            "program": "${workspaceFolder}\\app.ts",
+            "outFiles": [
+                "${workspaceFolder}\\dist\\*.js"
+            ],
+            "cwd": "${workspaceFolder}",
+            "protocol": "inspector"
         }
     ]
 }

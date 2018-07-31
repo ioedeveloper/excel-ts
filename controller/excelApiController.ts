@@ -22,9 +22,25 @@ let upload = multer({
 let excelHandler = (req:Request, res:Response) =>{
     upload(req, res, (err)=>{
         if(err) return res.status(200).send("Excel Upload Failed!");
-        let excelService:Excel = new Excel();
-        excelService.extractData("./uploads/"+filename);
-        return res.status(200).send("Excel uploaded successfully!");
+        let excelService:Excel = new Excel("./uploads/"+filename);
+
+        // extract data from excel
+        excelService.extractData().then((data)=>{
+            console.log("Data Extracted Successfully!");
+
+            // save data from excel
+            excelService.saveData(data).then((data)=>{
+                console.log("Data saved successfully!");
+                return res.status(200).send("Excel Upload Successful!");
+            }).catch((error)=>{
+                console.log(error);
+                return res.status(200).send("Oops! An error occurred while saving data.");
+            });
+
+        }).catch((error)=>{
+            console.log(error);
+            return res.status(200).send("Oops! An error occured while extracting data.");
+        });
     });
 }
 export {excelHandler};
